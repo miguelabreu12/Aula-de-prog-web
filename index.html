@@ -3,21 +3,81 @@
     <head>
         <title>Miguel Abreu de Matos</title>
         <style type="text/css">
-        body{font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; color: blue;}
+        body{font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; color:white;}
+        body{background-color:#003b72;}
 
-        h1{ color: green;}
-        h2{ color:purple ;}
+        h1{ color:white;}
+        h2{ color:white ;}
 
+        ol{
+            list-style-type: lower-roman ;
+            background: color #003b72;;
+            list-style-position: inherit;
+        }
+        ol li{
+            background-color:#003b72 ;
+        }
+        ol{
+            list-style-type: circle;
+        }
+        ul{
+            list-style-type: none;
+            background-color:#003b72
+        }
+        ul li {
+            background-color:#003b72;
+        }
+        .figuras{
+            display: flex;
+            flex-direction: row;
+        }
+        .figuras figure img {
+            width:150px ;
+        }
+        .figuras figure {
+            margin: auto;
+        }
+        header{
+           background-image:url("PROGRAMAÇÃO\ IMG.jpg");
+           background-size: 100%;
+           height: 600px;
+        }
+        a:link{
+            text-decoration: none;
+            color:red ;
+        }
+        a:visited{
+            color:pink;
+        }
+        a:hover{
+            color:lime;
+        }
+      
+       
         </style>
     </head>
     <body>
+        <a href="banner.jpg">
+            <img src="banner.jpg" alt="banner" width="1500" height="290"/>
+        </a>
+        <header>
         <h1>Repositorio de Miguel</h1>
-        <h2>Objetivo da pagina</h2>
+        </header>
+        <h2 style="color: white;">Sumário </h2>
+                <ul> 
+                    <li><a href="#objetivo da página">objetivo da página</a></li>
+                    <li><a href="#matéria">matéria</a></li>
+                    <li><a href="#Meus Hobbies">Meus Hobbies</a></li>
+                    <li><a href="#Minha Rotina">Minha Rotina</a></li>
+                    <li><a href="#contato">contato</a></li>
+                </ul>
+        <h2 id="objetivo da página">Objetivo da pagina</h2>
         <p>Entregar as atividades de programação</p>
-        <h2>Matéria</h2>
+        <p>Aprendendo HTML e CSS</p>
+        <h2 id="matéria">Matéria</h2>
         <p>Programação Web 1</p>
 
-        <h2> HOBBIES</h2>
+        <h2 id="Meus Hobbies">Meus Hobbies</h2>
         <ul>
             <li>jogar futevolei</li>
             <li>assitir fime na <a href="https://www.netflix.com/browse"> Netflix</a> </li>
@@ -29,7 +89,7 @@
                 <img src="treino.jpg" alt="treino finalizado">
             </figure>
         </ul>
-        <h2>ROTINA</h2>
+        <h2 id="Minha Rotina">Minha Rotina</h2>
         <ol>
             <li>acordo</li>
             <li>tomo café da manha</li>
@@ -43,7 +103,16 @@
             <li>dever</li>
             <li>janto</li>
             <li>dormir</li>
-
         </ol>
+        <hr>
+        <h3 id="contato"> contato</h3>
+        <ul>
+            <li>miguelabreumatos@gmail.com</li>
+            <li>
+                <a href="https://www.instagram.com/miguel.abreu027/">instagram</a>
+            </li>
+        </ul>
+
+        
     </body>
 </html>
