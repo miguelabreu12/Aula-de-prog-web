@@ -1,118 +1,135 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <title>Miguel Abreu de Matos</title>
-        <style type="text/css">
-        body{font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; color:white;}
-        body{background-color:#003b72;}
+<html lang="br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="formulario.css">
+    <title>formulario</title>
+</head>
+<body>
+    
+    <div>
+        <h1 id="titulo" >ROTA SEGUROS</h1>
+        <h2 id="paragrafo">Vendas de Plano de Saúde</h2>
+        <p id="subtitulo"> Complete as informações a seguir:</p>
+        <br>
+    </div>
 
-        h1{ color:white;}
-        h2{ color:white ;}
-
-        ol{
-            list-style-type: lower-roman ;
-            background: color #003b72;;
-            list-style-position: inherit;
-        }
-        ol li{
-            background-color:#003b72 ;
-        }
-        ol{
-            list-style-type: circle;
-        }
-        ul{
-            list-style-type: none;
-            background-color:#003b72
-        }
-        ul li {
-            background-color:#003b72;
-        }
-        .figuras{
-            display: flex;
-            flex-direction: row;
-        }
-        .figuras figure img {
-            width:150px ;
-        }
-        .figuras figure {
-            margin: auto;
-        }
-        header{
-           background-image:url("PROGRAMAÇÃO\ IMG.jpg");
-           background-size: 100%;
-           height: 600px;
-        }
-        a:link{
-            text-decoration: none;
-            color:red ;
-        }
-        a:visited{
-            color:pink;
-        }
-        a:hover{
-            color:lime;
-        }
-      
-       
-        </style>
-    </head>
-    <body>
-        <a href="banner.jpg">
-            <img src="banner.jpg" alt="banner" width="1500" height="290"/>
-        </a>
-        <header>
-        <h1>Repositorio de Miguel</h1>
-        </header>
-        <h2 style="color: white;">Sumário </h2>
-                <ul> 
-                    <li><a href="#objetivo da página">objetivo da página</a></li>
-                    <li><a href="#matéria">matéria</a></li>
-                    <li><a href="#Meus Hobbies">Meus Hobbies</a></li>
-                    <li><a href="#Minha Rotina">Minha Rotina</a></li>
-                    <li><a href="#contato">contato</a></li>
-                </ul>
-        <h2 id="objetivo da página">Objetivo da pagina</h2>
-        <p>Entregar as atividades de programação</p>
-        <p>Aprendendo HTML e CSS</p>
-        <h2 id="matéria">Matéria</h2>
-        <p>Programação Web 1</p>
-
-        <h2 id="Meus Hobbies">Meus Hobbies</h2>
-        <ul>
-            <li>jogar futevolei</li>
-            <li>assitir fime na <a href="https://www.netflix.com/browse"> Netflix</a> </li>
-            <li>academia</li>
-            <li>cozinhar</li>
-            <li>assistir diversos tipos de esporte</li>
-            <li>tocar tantan</li>
-            <figure>
-                <img src="treino.jpg" alt="treino finalizado">
-            </figure>
-        </ul>
-        <h2 id="Minha Rotina">Minha Rotina</h2>
-        <ol>
-            <li>acordo</li>
-            <li>tomo café da manha</li>
-            <li>olho se tem atividade no ava</li>
-            <ul>
-                <li>aproveita e ve se você tem dever para fazer no <a href="https://ava.cefor.ifes.edu.br/">Ava.cefor.ifes</a></li>
-            </ul>
-            <li>aula</li>
-            <li>almoçar</li>
-            <li>ir para a academia</li>
-            <li>dever</li>
-            <li>janto</li>
-            <li>dormir</li>
-        </ol>
-        <hr>
-        <h3 id="contato"> contato</h3>
-        <ul>
-            <li>miguelabreumatos@gmail.com</li>
-            <li>
-                <a href="https://www.instagram.com/miguel.abreu027/">instagram</a>
-            </li>
-        </ul>
-
+    <form>
+        <fieldset class="grupo">
+            <div class="campo">
+                <label for="nome"><strong>Nome</strong></label>
+                <input type="text" nome="nome" id="nome" required>
+            </div>
+        </fieldset>    
+            
+        <fieldset></fieldset>
+            <div class="campo">
+                <label for="sobrenome"><strong>Sobrenome</strong></label>
+                <input type="text" nome= "sobrenome" id="sobrenome"required>
+            </div>
+        </fieldset>
         
-    </body>
+
+        <fieldset class="grupo">
+        <div class="campo">
+            <label for="telefone"><strong>Telefone</strong></label>
+            <input type="text" nome= "telefone" id="telefone"required>
+        </div>
+        </fieldset>
+      
+        <fieldset></fieldset>
+        <div class="campo">
+            <label for="email"><strong>Email</strong></label>
+            <input type="text"nome= "email" id="email"required>
+        </div>
+        </fieldset>
+
+        <fieldset>
+        <div class="campo"> 
+            <label for="cpf"><strong>CPF</strong></label>
+            <input type="text" nmoe="cpf" id="cpf"required>
+        </div>
+        </fieldset>
+
+        <div class="campo">
+            <label><strong>Operadoras de Planos:</strong>  </label> <br>
+            
+            <label>
+                <input type="radio" name="devweb" id="unimed"> Unimed <br>
+            </label>
+            <label>
+                <input type="radio" name="devweb" id="bradesco">Bradesco <br>
+            </label>
+            <label>
+                <input type="radio" name="devweb" id="samp">Samp <br>
+            </label>
+            <label>
+                <input type="radio" name="devweb" id="sao bernardo"> São Bernardo <br>
+            </label>
+            <label>
+                <input type="radio" name="devweb" id="medsenior"> Medsênior <br>
+            </label>
+            <label>
+                <input type="radio" name="devweb" id="goodlife">Goodlife <br>
+            </label>
+        
+        </div>
+        <br>
+
+        <div class="campo">
+            <label for="categorias"><strong>Categorias de Planos de Saúde</strong></label><br>
+            <select id="categorias"> 
+                <option selected disabled value="">Selecione</option>
+                <option>Individual</option>
+                <option>Familiar</option>
+                <option>Adesão</option>
+                <option>Empresarial</option>
+            </select>
+        </div>
+        <br>
+
+        <fieldset class="grupo">
+            <div id="check">
+                <label><strong> Tipo de plano</strong></label><br><br>
+                <input  type="checkbox" id="tipodeplano" name="tipodeplano" value="Grupos de Municipios">
+                <label for="tipodeplano"></label> Grupos de Municípios
+                <input  type="checkbox" id="tipodeplano" name="tipodeplano" value="Estatual">
+                <label for="tipodeplano"></label> Estadual
+                <input  type="checkbox" id="tipodeplano" name="tipodeplano" value="Nacional">
+                <label for="tipodeplano"></label> Nacional
+
+            </div>
+            <br><br>
+
+            <div class="campo">
+                <label for="faixaetaria"><strong>Faixa Etária</strong></label><br>
+                <select id="faixaetaria"> 
+                    <option selected disabled value="">Selecione</option>
+                    <option> de 00 a 18</option>
+                    <option> de 19 a 23</option>
+                    <option> de 24 a 28</option>
+                    <option> de 29 a 33</option>
+                    <option> de 34 a 38</option>
+                    <option> de 39 a 43</option>
+                    <option> de 44 a 48</option>
+                    <option> de 49 a 53</option>
+                    <option> de 54 a 58</option>
+                    <option> Acima de 59</option>
+                </select>
+            </div>
+            <br>
+            </fieldset>
+
+            <div class="campo">
+                <br>
+                <label for="duvida"><strong>tire suas dúvidas a baixo :</strong></label><br>
+                <textarea rows="6" style="width: 26em" id="duvidas" nome= "duvidas"></textarea>
+            </div>
+        
+        <button class="botao" type="submit">Enviar</button> 
+
+    </form>
+</body>
 </html>
