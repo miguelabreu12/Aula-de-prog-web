@@ -6,11 +6,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="formulario.css">
     <title>formulario</title>
+    <script>
+        function tamanho(size) {
+               h1 = document.querySelector('h1');
+               h1.style.fontSize = size;
+           }
+   </script>
+
 </head>
 <body>
+    <header>
+        <h1> <button onclick="tamanho('large')"> - </button>
+             <button onclick="tamanho('xxx-large')"> + </button>
+             ROTA SEGUROS
+            </h1>
+    </header>
     
     <div>
-        <h1 id="titulo" >ROTA SEGUROS</h1>
         <h2 id="paragrafo">Vendas de Plano de Saúde</h2>
         <p id="subtitulo"> Complete as informações a seguir:</p>
         <br>
