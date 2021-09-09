@@ -1,12 +1,15 @@
-const ordem = 3;
-const matriz = Array(ordem);
+//passa as variáveis para let
+let ordem = 0;
+let matriz = Array(ordem);
 for (let i=0; i<matriz.length; i++) {
     matriz[i] = Array(ordem);
 }
-const somaNumeros = 15;
+let somaNumeros = ((1 + (ordem ** 2)) * ordem) / 2 ;
 
 document.addEventListener('DOMContentLoaded', () => {
-    insereTabela();
+    //chamei a função que pergunta a quantidade de quadrados
+    perguntaTamanho();
+    ;
 });
 
 function insereTabela() {
@@ -25,6 +28,30 @@ function insereTabela() {
     }
 }
 
+function perguntaTamanho() {
+    const div = document.createElement("div");
+    // cria o input
+    div.innerHTML = `
+    <input class= "pergunta"> <- Digite qual a proporção você deseja no seu quadrado: 3, 4 ou 5 </input> `;
+    document.body.append(div);
+    const input = document.querySelector('input')
+    input.addEventListener('change', ()=> {
+        // modifica o valor da ordem (passa a ser o valor do input), da matriz e da soma dos números
+        ordem =  parseInt(input.value)
+        matriz = Array(ordem)
+        for (let i=0; i<matriz.length; i++) {
+            matriz[i] = Array(ordem);
+        }
+        somaNumeros = ((1 + (ordem ** 2)) * ordem) / 2 
+        //insere a tabela
+        insereTabela()
+        div.remove()
+    })
+    
+    
+    
+}
+
 function getLinhaColuna(celula) {
     const [linha,coluna] = celula.id.split('col');
     return [linha.split('lin')[1], coluna];
@@ -40,6 +67,13 @@ function insereInput(celula) {
         const quadradoCompleto = verificaMatriz();
         if (quadradoCompleto) {
             document.querySelector('#quadradomagico').classList.add('vitoria');
+            //bloqueia o input
+            document.querySelectorAll('input').forEach(input => {
+                input.readOnly = true;
+            });
+            //chama a função que insere o botão de reiniciar e a mensagem
+            inserirbotoesemensagem()
+            
         } else {
             document.querySelector('#quadradomagico').classList.remove('vitoria');
         }
@@ -61,12 +95,43 @@ function verificaSomas() {
     return diagonalPrincpalOK && diagonalSegundariaOK && todasLinhasOK && todasColunasOK;
 }
 
+//essa é função q cria botão para reiniciar
+function inserirbotoesemensagem() {
+    div = document.createElement("div");
+    div.innerHTML = `
+    <button onclick =  location.reload() > Reiniciar </button> 
+    <h2> VOCÊ NÃO MERECE PALMAS, VOCÊ MERECE O TOCANTINS TODO!!!! <br> CLIQUE EM "REINICIAR" PARA JOGAR NOVAMENTE </h2>`;
+    document.body.append(div);
+    
+}
+
+
+
 function verificaSomaColunas() {
     let todasColunasOK = true;
     for (let j=0; j<ordem; j++) {
         todasColunasOK &= verificaSomaColuna(j);
     }
     return todasColunasOK;
+}
+
+function verificaSomaColuna(j) {
+    let soma = 0;
+    for (let i=0; i<ordem; i++) {
+        if (matriz[i][j] == null) return false;
+        soma += matriz[i][j];
+    }
+    if (soma != somaNumeros) {
+        for (let i=0; i<ordem; i++) { 
+            atribuiClasseCelula("somaerradacoluna", i, j);
+        }
+        return false;
+    } else {
+        for (let i=0; i<ordem; i++) { 
+            removeClasseCelula("somaerradacoluna", i, j);
+        }
+    }
+    return true;
 }
 
 function verificaSomaLinhas() {
@@ -77,65 +142,61 @@ function verificaSomaLinhas() {
     return todasLinhasOK;
 }
 
-function celulaVazia(celula) {
-    const [i,j] = celula;
-    return matriz[i][j] == null;
-}
-
-function somaValores(total, celula) {
-    const [i,j] = celula;
-    return total + matriz[i][j];
-}
-
-function verificaSomaCelulas(celulas, classe) {
-    if (celulas.some(celulaVazia)) return false;
-    const soma = celulas.reduce(somaValores, 0);
+function verificaSomaLinha(i) {
+    let soma = 0;
+    for (let j=0; j<ordem; j++) {
+        if (matriz[i][j] == null) return false;
+        soma += matriz[i][j];
+    }
     if (soma != somaNumeros) {
-        acaoClasseCelulas(atribuiClasseCelula, classe, celulas);
+        for (let j=0; j<ordem; j++) { 
+            atribuiClasseCelula("somaerradalinha", i, j);
+        }
         return false;
     } else {
-        acaoClasseCelulas(removeClasseCelula, classe, celulas);
+        for (let j=0; j<ordem; j++) { 
+            removeClasseCelula("somaerradalinha", i, j);
+        }
     }
     return true;
 }
 
-function acaoClasseCelulas(acao, classe, celulas) {
-    celulas.map(celula => {
-        const [i,j] = celula;
-        acao(classe, i, j);
-    });
-}
-
-function verificaSomaColuna(j) {
-    let celulas = [];
-    for (let i=0; i<ordem; i++) {
-        celulas[i] = [i,j];
-    }
-    return verificaSomaCelulas(celulas, "somaerradacoluna");
-}
-
-function verificaSomaLinha(j) {
-    let celulas = [];
-    for (let i=0; i<ordem; i++) {
-        celulas[i] = [j,i];
-    }
-    return verificaSomaCelulas(celulas, "somaerradalinha");
-}
-
 function verificaSomaDiagonalSecundaria() {
-    let celulas = [];
+    let soma = 0;
     for (let i=0; i<ordem; i++) {
-        celulas[i] = [i,ordem-i-1];
+        if (matriz[i][ordem-i-1] == null) return false;
+        soma += matriz[i][ordem-i-1];
     }
-    return verificaSomaCelulas(celulas, "somaerradadiagonalsecundaria");
+    if (soma != somaNumeros) {
+        for (let i=0; i<ordem; i++) { 
+            atribuiClasseCelula("somaerradadiagonalsecundaria", i, ordem-i-1);
+        }
+        return false;
+    } else {
+        for (let i=0; i<ordem; i++) { 
+            removeClasseCelula("somaerradadiagonalsecundaria", i, ordem-i-1);
+        }
+    }
+    return true;
 }
 
 function verificaSomaDiagonalPrincipal() {
-    let celulas = [];
+    let soma = 0;
     for (let i=0; i<ordem; i++) {
-        celulas[i] = [i,i];
+        if (matriz[i][i] == null) return false;
+        soma += matriz[i][i];
     }
-    return verificaSomaCelulas(celulas, "somaerradadiagonalprincipal");
+    if (soma != somaNumeros) {
+        for (let i=0; i<ordem; i++) { 
+            atribuiClasseCelula("somaerradadiagonalprincipal", i, i);
+        }
+        return false;
+    } else {
+        for (let i=0; i<ordem; i++) { 
+            removeClasseCelula("somaerradadiagonalprincipal", i, i);
+        }
+    }
+    return true;
 }
 
 function verificaNumerosForaDosLimites() {
